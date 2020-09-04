@@ -42,12 +42,18 @@ func TestCase1(t *testing.T) {
     s.PushBackIgnore(2)
     checkOrder(t, s, []int{4, 1, 2, 3})
     
+    s.PushFrontIgnore(2)
+    checkOrder(t, s, []int{4, 1, 2, 3})
+    
     if s.Len() != 4 {
         t.Error("Invalid length")
     }
     
     
     s.Remove(1)
+    checkOrder(t, s, []int{4, 2, 3})
+    
+    s.Remove(404)
     checkOrder(t, s, []int{4, 2, 3})
     
     
