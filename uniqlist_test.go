@@ -2,6 +2,7 @@ package uniqlist
 
 import (
     "testing"
+    "container/list"
 )
 
 func checkOrder(t *testing.T, s *UniqList, expect []int) {
@@ -129,4 +130,48 @@ func BenchmarkRemove(b *testing.B) {
     }
 }
 
+func BenchmarkContainerListPushBack(b *testing.B) {
+    var s list.List
+    
+    b.ResetTimer()
+    for i := 0; i < b.N; i++ {
+        s.PushBack(i)
+    }
+}
 
+
+func BenchmarkContainerListRemove(b *testing.B) {
+    var s list.List
+    
+    for i:=0;i<b.N;i++{
+        s.PushFront(i)
+    }
+    
+    b.ResetTimer()
+    for i := 0; i < b.N; i++ {
+        s.Remove(s.Front())
+    }
+}
+
+func BenchmarkMapPush(b *testing.B) {
+    s := make(map[int]struct{})
+    
+    b.ResetTimer()
+    for i := 0; i < b.N; i++ {
+        s[i] = struct{}{}
+    }
+}
+
+
+func BenchmarkMapRemove(b *testing.B) {
+    s := make(map[int]struct{})
+    
+    for i:=0;i<b.N;i++{
+        s[i] = struct{}{}
+    }
+    
+    b.ResetTimer()
+    for i := 0; i < b.N; i++ {
+        delete(s, i)
+    }
+}
