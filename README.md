@@ -1,4 +1,6 @@
-# uniqlist
+# uniqlist [![GoDoc](https://godoc.org/github.com/greensea/uniqlist?status.svg)](http://godoc.org/github.com/greensea/uniqlist) [![codecov](https://codecov.io/gh/greensea/uniqlist/branch/master/graph/badge.svg)](https://codecov.io/gh/greensea/uniqlist)
+
+
 A list contains only unique elements
 
 ## Usage
